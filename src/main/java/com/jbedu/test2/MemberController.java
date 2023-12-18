@@ -6,8 +6,10 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
@@ -44,10 +46,21 @@ public class MemberController {
 		return "join";
 	}
 	
-	@RequestMapping(value = "/joinOk")
+	@RequestMapping(value = "/join2")
+	public String join2() {
+		return "join2";
+	}
+	
+	@RequestMapping(value = "/joinOk")//get방식
 	public String joinOk(JoinMember joinMember) {
 		
 		return "joinOk";
+	}
+	
+	@RequestMapping(value = "/joinOk2", method = RequestMethod.POST)//post방식
+	public String joinOk2(@ModelAttribute("jmem") JoinMember joinMember) {//데이터 객체의 이름을 변경
+		
+		return "joinOk2";
 	}
 	
 	@RequestMapping(value = "/memberNum/{memberNumber}")
