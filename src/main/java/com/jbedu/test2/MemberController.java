@@ -71,6 +71,34 @@ public class MemberController {
 		return "memberNumOk";
 	}
 	
+	@RequestMapping(value = "/memberCheck")
+	public String memberCheck() {		
+		
+		return "memberCheck";
+	}
+	
+	@RequestMapping(value = "/memberCheckOk")
+	public String memberCheckOk(HttpServletRequest request) {
+		
+		String cid = request.getParameter("checkId");
+		
+		if(cid.equals("tiger")) {
+			return "redirect:memberCheckGood";
+		} else {
+			return "redirect:memberCheckNg";
+		}
+	}
+	
+	@RequestMapping(value = "/memberCheckGood")
+	public String memberCheckGood() {
+		return "memberCheckGood";
+	}
+	
+	@RequestMapping(value = "/memberCheckNg")
+	public String memberCheckNg() {
+		return "memberCheckNg";
+	}
+	
 	
 	
 
